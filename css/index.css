@@ -1,0 +1,199 @@
+body {
+  min-width: 320px;
+  max-width: 750px;
+  margin: 0 auto;
+  background-color: #f2f4f7;
+}
+a {
+  text-decoration: none;
+  color: #707070;
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 75px !important;
+  }
+}
+.header {
+  height: 1.06666667rem;
+  border-bottom: 1px solid #ececec;
+  text-align: center;
+  line-height: 1.06666667rem;
+  font-size: 0.46666667rem;
+  color: #000;
+  background-color: #fff;
+}
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.6rem 0 0.8rem 0;
+  background-color: #fff;
+}
+.nav .item {
+  display: flex;
+  width: 33.33%;
+  flex-direction: column;
+  align-items: center;
+}
+.nav .item img {
+  width: 1.85333333rem;
+  height: 1.85333333rem;
+}
+.nav .item span {
+  font-size: 0.33333333rem;
+}
+.nav .item:nth-child(-n+3) {
+  margin-bottom: 0.82666667rem;
+}
+.nav .go {
+  margin: 0.56rem 0.18666667rem 0;
+}
+.content {
+  padding: 0.53333333rem 0.29333333rem;
+  background-color: #fff;
+  margin-top: 0.13333333rem;
+}
+.content .content_hd {
+  display: flex;
+  height: 0.50666667rem;
+  line-height: 0.50666667rem;
+  justify-content: space-between;
+  margin-bottom: 0.45333333rem;
+}
+.content .content_hd h4 {
+  margin: 0;
+  font-size: 0.37333333rem;
+  color: #333;
+}
+.content .content_hd h4 img {
+  float: left;
+  vertical-align: bottom;
+  width: 0.50666667rem;
+  height: 0.50666667rem;
+}
+.content .content_hd .more {
+  font-size: 0.29333333rem;
+  color: #999;
+}
+.get_job_focus {
+  position: relative;
+}
+.get_job_focus .swiper-container {
+  height: 100%;
+  width: 7.2rem;
+}
+.get_job_focus .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  transition: 300ms;
+  transform: scale(0.8);
+  opacity: 0.4;
+}
+.get_job_focus .swiper-slide .focus_one {
+  width: 4.50666667rem;
+  height: 5.01333333rem;
+}
+.get_job_focus .swiper-slide .focus_one img {
+  width: 100%;
+  height: 100%;
+}
+.get_job_focus .swiper-slide .text_one {
+  display: none;
+  width: 4.50666667rem;
+  font-size: 0.33333333rem;
+  margin-top: 0.32rem;
+  color: #333;
+}
+.get_job_focus .swiper-slide-active,
+.get_job_focus .swiper-slide-duplicate-active {
+  transform: scale(1);
+  z-index: 999;
+  opacity: 1;
+}
+.get_job_focus .swiper-slide-active .text_one,
+.get_job_focus .swiper-slide-duplicate-active .text_one {
+  display: block;
+}
+.study {
+  margin-bottom: 1.06666667rem;
+}
+.study .swiper {
+  width: 100%;
+  height: 100%;
+}
+.study .study_fo {
+  padding: 0.13333333rem 0;
+}
+.study .swiper-slide {
+  width: 3.86666667rem;
+  height: 4.53333333rem;
+  border-radius: 0.13333333rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+}
+.study .swiper-slide h5 {
+  font-size: 0.34666667rem;
+  text-align: left;
+  margin: 0;
+  font-weight: 400;
+  margin: 0.26666667rem 0;
+}
+.study .swiper-slide p {
+  text-align: left !important;
+  font-size: 0.26666667rem;
+  color: #ff4400;
+}
+.footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 750px;
+  height: 1.46666667rem;
+  background-color: #fff;
+  z-index: 9999;
+  padding: 0.26666667rem;
+  border-top: 1px solid #ececec;
+}
+.footer .item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer .item img {
+  width: 0.52rem;
+  height: 0.54666667rem;
+}
+.footer .item p {
+  font-size: 0.29333333rem;
+  color: #666;
+  margin-top: 0.13333333rem;
+}

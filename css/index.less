@@ -1,0 +1,261 @@
+body {
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    background-color: #f2f4f7;
+}
+a {
+    text-decoration: none;
+    color: #707070;
+}
+
+// 约束当屏幕大于750px的时候 html字体大小就不变化了
+@media screen and (min-width:750px) {
+    html {
+        // 这个也要修改为对应的baseFont字体大小才可以 不修改JS 默认10等分 则 1rem = 75px
+        font-size: 75px !important;
+        // 如果修改JS 采用20等分 则 1rem = 37.5px
+        // font-size: 37.5px !important;
+        // 如果750px的设计稿刚好在750的屏幕中开发或者在手机网页中开发则 没有上述问题 直接采用默认JS即可 
+        // font-size: 75px !important;
+    }
+}
+// 方法1、 先设置设计稿宽度对应的基准html标签字体大小 最后用查找替换 将所有的 px 替换为 (rem / @baseFont) 但是这个方法没办法得到验证 查找替换功能好像无法实现 
+// 方法2、 安装一个插件 A px to rem 的插件 这样在less里输入px时会有提示 并自动计算转换为rem 值 这样可以省去设置 @baseFont 也可以省去除法运算  但是用此插件需注意 要设置 cssroot 值（fontsize字体大小） 因为默认的root值为16 （1rem = 16px ）
+// 本案例中设计稿宽度是750px 引用Js默认的是划分为10等份 此时 1rem = 75px ;但视频中老师修改了js划分为20等份 所以此时划分后的 1rem = 37.5px 之所以如此是因为在实际开发中我们拿到的虽然是750px的设计稿 但是却要实现在iPhone6上的可视效果 而iphone6 的屏幕宽度是375px 划分10等份就是 37.5px 与 750px设计稿划分10等份的 75px冲突，所以要修改JS默认划分等份为20 使两者相匹配
+
+// 如果不修改flexible.js 默认划分为10等份  此时750设计稿在375设备宽的屏幕中操作对应的html字体大小应该是 75px 
+@baseFont: 75;
+// .rem_75 {
+//     width: (100rem / @baseFont);
+//     height: (100rem / @baseFont);
+//     background-color: pink;
+// }
+// 如果修改flexible.js 默认划分为20等份  此时750设计稿在375屏幕宽的设备中操作html字体大小应该是 37.5px 
+// @baseFont: 37.5;
+// .rem_37_5 {
+//     width: (100rem / @baseFont);
+//     height: (100rem / @baseFont);
+//     background-color: purple;
+// }
+// 头部模块
+.header {
+    height: (80rem / @baseFont);
+    border-bottom: 1px solid #ececec;
+    text-align: center;
+    line-height: (80rem / @baseFont);
+    font-size: (35rem / @baseFont);
+    color: #000;
+    background-color: #fff;
+}
+// 导航栏模块
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding: (45rem / @baseFont) 0 (60rem / @baseFont) 0;
+    background-color: #fff;
+    // justify-content: space-around;
+    // align-content: space-around;
+    .item {
+        display: flex;
+        width: 33.33%;
+        // text-align: center;
+        flex-direction: column;
+        // align-content: center;
+        align-items: center;
+        img {
+            width: (139rem / @baseFont);
+            height: (139rem / @baseFont);
+            // 水平居中方法1 给图片以margin 0 auto 给文字以text-align center
+            // margin: 0 auto;
+            // 方法2 flex布局
+            // 先换行 再变更主轴 最后侧轴单行居中
+        }
+        span {
+            font-size: (25rem / @baseFont);
+        }
+        // 选择前三个 a 标签 less的嵌套写法
+        &:nth-child(-n+3) {
+            margin-bottom: (62rem / @baseFont);
+        }
+    }
+    .go {
+        margin: (42rem / @baseFont) (14rem / @baseFont) 0;
+    }
+}
+// 就业指导模块
+.content {
+    padding: (40rem / @baseFont) (22rem / @baseFont);
+    background-color: #fff;
+    margin-top: (10rem / @baseFont);
+    .content_hd {
+        display: flex;
+        height: (38rem / @baseFont);
+        line-height: (38rem / @baseFont);
+        justify-content: space-between;
+        margin-bottom: (34rem / @baseFont);
+        h4 {
+            margin: 0;
+            font-size: (28rem / @baseFont);
+            color: #333;
+            img {
+                float: left;
+                // 如果用middle 图片视觉上会掉下来一点点  
+                vertical-align: bottom;
+                width: (38rem / @baseFont);
+                height: (38rem / @baseFont);
+            }
+        }
+        .more {
+            font-size: (22rem / @baseFont);
+            color: #999;
+        }
+    }
+}
+// 引入轮播图样式
+.get_job_focus {
+    position: relative;
+    .swiper-container {
+        // width: 100%;
+        height: 100%;
+        width: (540rem / @baseFont);
+      }
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+  
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        transition: 300ms;
+        // 其余兄弟
+        transform: scale(0.8);
+        opacity: 0.4;
+        .focus_one {
+            width: (338rem / @baseFont);
+            height: (376rem / @baseFont);
+            // 这里不给img百分比好像也能自适应
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .text_one {
+            display: none;
+            width: (338rem / @baseFont);
+            font-size: (25rem / @baseFont);
+            margin-top: (24rem / @baseFont);
+            color: #333;
+        }
+      }
+      .swiper-slide-active,
+      .swiper-slide-duplicate-active{
+        //   当前兄弟
+        transform: scale(1);
+        z-index: 999;
+        opacity: 1;
+        .text_one {
+            display: block;
+        }
+      }
+}
+// 学习模块轮播图
+.study {
+    margin-bottom: (80rem / @baseFont);
+    .swiper {
+        width: 100%;
+        height: 100%;
+      }
+      .study_fo {
+          padding: (10rem / @baseFont) 0;
+      }
+      .swiper-slide {
+
+          width: (290rem / @baseFont);
+          height: (340rem / @baseFont);
+          border-radius: (10rem / @baseFont);
+          box-shadow: 0 0 10px rgba(0,0,0,.1);
+        // text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        // -webkit-justify-content: center;
+        // justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        // -webkit-align-items: center;
+        // align-items: center;
+        
+        h5 {
+            font-size: (26rem / @baseFont);
+            text-align: left;
+            margin: 0;
+            font-weight: 400;
+            margin: (20rem / @baseFont) 0;
+        }
+        p {
+            text-align: left !important;
+            font-size: (20rem / @baseFont);
+            color: #ff4400;
+        }
+      }
+
+    //   .swiper-slide img {
+    //     display: block;
+    //     width: 100%;
+    //     height: 100%;
+    //     object-fit: cover;
+    //   }
+}
+// 底部模块
+.footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    // footer固定定位 如果不设置最大宽度 会在PC端显示超大
+    max-width: 750px;
+    height: (110rem / @baseFont);
+    background-color: #fff;
+    z-index: 9999;
+    padding: (20rem / @baseFont);
+    border-top: 1px  solid #ececec;
+    .item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+        img {
+            width: (39rem / @baseFont);
+            height: (41rem / @baseFont);
+        }
+        p {
+            font-size: (22rem / @baseFont);
+            color: #666;
+            margin-top: (10rem / @baseFont);
+        }
+    }
+}
